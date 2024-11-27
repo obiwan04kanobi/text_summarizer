@@ -21,7 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/summarizer/index.html"
+      "dest": "/summarizer/views.index"
     }
   ],
   "env": {
