@@ -20,7 +20,7 @@
       "dest": "/summarizer/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "/",
       "dest": "/summarizer/views.index"
     }
   ],
