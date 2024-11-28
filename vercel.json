@@ -16,12 +16,8 @@
       "dest": "/summarizer/static/$1"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/",
-      "dest": "text_summarizer/wsgi.application"
+      "src": "/(.*)",
+      "dest": "/text_summarizer/wsgi.py"
     }
   ],
   "env": {
