@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "manage.py",
+      "src": "text_summarizer/wsgi.py",
       "use": "@vercel/python"
     },
     {
@@ -17,11 +17,11 @@
     },
     {
       "src": "/api/(.*)",
-      "dest": "/summarizer/$1"
+      "dest": "/api/$1"
     },
     {
       "src": "/",
-      "dest": "/summarizer/views.index"
+      "dest": "text_summarizer/wsgi.application"
     }
   ],
   "env": {
