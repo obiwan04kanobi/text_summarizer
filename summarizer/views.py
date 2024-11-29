@@ -1,16 +1,15 @@
-# summarizer/views.py
 import requests
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
 
-def chunk_text(text, max_length=500):
+def chunk_text(text, max_words=500):
     """
     Splits text into smaller chunks for processing.
     """
     words = text.split()
-    for i in range(0, len(words), max_length):
-        yield " ".join(words[i:i + max_length])
+    for i in range(0, len(words), max_words):
+        yield " ".join(words[i:i + max_words])
 
 @csrf_exempt
 def summarize_text(request):
@@ -24,14 +23,19 @@ def summarize_text(request):
         api_url = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
         headers = {"Authorization": f"Bearer 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"}
 
+        input_length = len(input_text.split())
+        # Dynamically calculate max_length and min_length
+        max_length = min(150, max(50, input_length // 4))
+        min_length = max(30, input_length // 10)
+
         # Process text in chunks
         summaries = []
         for chunk in chunk_text(input_text):
             payload = {
                 "inputs": chunk,
                 "parameters": {
-                    "max_length": 100,
-                    "min_length": 30,
+                    "max_length": max_length,
+                    "min_length": min_length,
                     "length_penalty": 2.0,
                     "num_beams": 4
                 }
