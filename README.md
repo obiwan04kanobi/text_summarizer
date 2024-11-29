@@ -1,4 +1,3 @@
-
 # Text Summarization Tool 🌟  
 
 A clean and modern web application that uses AI to generate concise summaries from user-provided text. Built with Django for the backend and styled with a sleek, Apple-inspired frontend using Tailwind CSS.
@@ -11,6 +10,17 @@ A clean and modern web application that uses AI to generate concise summaries fr
 - **Minimalistic Design**: Inspired by Apple's design principles for a clean and modern user interface.  
 - **Responsive Layout**: Works seamlessly across desktops, tablets, and mobile devices.  
 - **Fast and Efficient**: Provides summaries within seconds with a simple copy-paste workflow.  
+
+---
+
+## 🚧 Constraints  
+
+- **Text Length**: The input text is processed in chunks of up to **500 words** for optimal summarization. Longer texts are split and summarized individually.  
+- **Summary Length**: The summarized output is dynamically determined based on the input text length:  
+  - **Short Inputs**: Summaries are concise, with a minimum of **30 words** and a maximum of **50 words**.  
+  - **Long Inputs**: Summaries can go up to **150 words** but are constrained by the capabilities of the Hugging Face API.  
+- **API Limits**: The app relies on the Hugging Face API, so response time and accuracy depend on their service availability.  
+- **Context Preservation**: For very large texts, summaries are generated for individual chunks and then combined. This may lead to slightly reduced coherence across combined summaries.  
 
 ---
 
@@ -112,4 +122,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 👤 **Mayank Pant**  
 - [GitHub](https://github.com/obiwan04kanobi)  
 - [LinkedIn](https://www.linkedin.com/in/mayank04pant/)  
-
+- [Portfolio](https://mayankpant.codes/)
